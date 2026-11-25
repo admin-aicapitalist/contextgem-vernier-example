@@ -5,13 +5,13 @@ The agent is set up on Vernier with the checks below (VERIFIER), in one call. Th
 attempts follow, the way an agent would make them; before each one, the agent asks Vernier
 whether the payment is backed by what ContextGem actually extracted.
 
-    uv run demo.py --offline              # use extraction.json: nothing to install, no LLM key
-    uv run --extra extract demo.py        # extract with ContextGem and an LLM first
+    uv run src/demo.py --offline          # use data/extraction.json: nothing to install, no LLM key
+    uv run --extra extract src/demo.py    # extract with ContextGem and an LLM first
 
 Environment: VERNIER_ADMIN_KEY (the key you got when you signed up); VERNIER_URL to use another
 Vernier API than the public one; for extraction CONTEXTGEM_MODEL (any LiteLLM model, e.g.
 "openai/gpt-4o-mini" or "ollama/llama3.1") and CONTEXTGEM_API_KEY if the model needs one. The
-agent's own key is saved next to this script (invoice-agent.key) the first time.
+agent's own key is saved in the repo's root (invoice-agent.key) the first time.
 """
 
 import json
@@ -21,9 +21,10 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
-HERE = Path(__file__).parent
-CACHE = HERE / "extraction.json"
-KEY_FILE = HERE / "invoice-agent.key"
+ROOT = Path(__file__).resolve().parent.parent
+DATA = ROOT / "data"
+CACHE = DATA / "extraction.json"
+KEY_FILE = ROOT / "invoice-agent.key"
 AGENT = "invoice-agent"
 VERNIER_URL = "https://vernier-api-4sut5e5a6q-ez.a.run.app"
 
@@ -166,7 +167,7 @@ def main() -> None:
     if "--offline" in sys.argv:
         extraction = json.loads(CACHE.read_text())
     else:
-        extraction = extract((HERE / "invoice.txt").read_text())
+        extraction = extract((DATA / "invoice.txt").read_text())
         CACHE.write_text(json.dumps(extraction, indent=2) + "\n")
     print("ContextGem extracted:")
     for name, f in extraction.items():

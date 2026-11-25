@@ -6,14 +6,14 @@ sentence it came from. [Vernier](https://www.aicapitalist.net/vernier) checks th
 that extraction before it runs.
 
 ```
-invoice.txt --ContextGem--> fields + sources --agent--> pay_invoice(...) --Vernier--> ALLOW / BLOCK / ESCALATE
+data/invoice.txt --ContextGem--> fields + sources --agent--> pay_invoice(...) --Vernier--> ALLOW / BLOCK / ESCALATE
 ```
 
 ## Run it
 
 ```sh
 export VERNIER_ADMIN_KEY=...      # get one at https://www.aicapitalist.net/vernier
-uv run demo.py --offline          # reads extraction.json: nothing to install, no LLM key
+uv run src/demo.py --offline      # reads data/extraction.json: nothing to install, no LLM key
 ```
 
 To extract the invoice live with ContextGem first:
@@ -21,7 +21,7 @@ To extract the invoice live with ContextGem first:
 ```sh
 export CONTEXTGEM_MODEL=openai/gpt-4o-mini   # any LiteLLM model
 export CONTEXTGEM_API_KEY=...
-uv run --extra extract demo.py
+uv run --extra extract src/demo.py
 ```
 
 ## What it shows
@@ -34,7 +34,7 @@ The agent tries three payments and asks Vernier before each one:
 | An IBAN from a "we changed banks" email | BLOCK | that IBAN appears nowhere in the extraction |
 | Ten times the total | ESCALATE | the amount appears nowhere, so a person decides |
 
-The checks are written out in `demo.py` (`VERIFIER`) and set on the agent with one call. A payment
+The checks are written out in `src/demo.py` (`VERIFIER`) and set on the agent with one call. A payment
 goes through only when every check passes. Every verdict comes with a signed receipt.
 
 The invoice, the companies and the IBANs are synthetic.
