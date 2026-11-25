@@ -1,0 +1,17 @@
+{
+  "Invoice number": {
+    "value": "NWP-2026-0412",
+    "source": "Invoice number: NWP-2026-0412 Reference: NWP-2026-0412",
+    "justification": null
+  },
+  "Payee IBAN": {
+    "value": "NL91 ABNA 0417 1643 00",
+    "source": "IBAN: NL91 ABNA 0417 1643 00",
+    "justification": "The IBAN is specified in the invoice as the account to which the payment should be made."
+  },
+  "Total due": {
+    "value": 1450.0,
+    "source": "Total due: EUR 1,450.00 (reverse charge, VAT 0%)",
+    "justification": null
+  }
+}

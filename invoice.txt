@@ -1,0 +1,23 @@
+INVOICE
+
+Seller: Northwind Packaging B.V., Keizersgracht 12, 1015 CS Amsterdam, Netherlands
+VAT: NL001234567B01
+Buyer: Example Robotics GmbH, Friedrichstrasse 40, 10117 Berlin, Germany
+
+Invoice number: NWP-2026-0412
+Issue date: 4 November 2026
+Due date: 4 December 2026
+
+Description                          Qty    Unit price    Total
+Corrugated shipping boxes, 60x40      500        2.10    1,050.00
+Custom print, one colour              500        0.80      400.00
+
+Total due: EUR 1,450.00 (reverse charge, VAT 0%)
+
+Please pay by bank transfer to:
+Northwind Packaging B.V.
+IBAN: NL91 ABNA 0417 1643 00
+BIC: ABNANL2A
+Reference: NWP-2026-0412
+
+This invoice is a synthetic example; the companies and the account do not exist.

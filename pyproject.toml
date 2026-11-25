@@ -1,0 +1,10 @@
+[project]
+name = "contextgem-vernier-example"
+version = "0.1.0"
+description = "ContextGem extracts an invoice with sources; Vernier checks the agent's payment against them"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []  # the demo talks to Vernier with the standard library
+
+[project.optional-dependencies]
+extract = ["contextgem"]  # only to extract the invoice live instead of reading extraction.json
